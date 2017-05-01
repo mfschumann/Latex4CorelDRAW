@@ -158,10 +158,13 @@ namespace Latex4CorelDraw
                 m_scintilla.Text = template;
                 if (useTemplate)
                 {
-                    int index = m_scintilla.Text.IndexOf("<Enter latex code>", 0);
-                    //m_scintilla.Select(index, 18);
-                    m_scintilla.Selection.Start = index;
-                    m_scintilla.Selection.End = index + 18;
+                    try
+                    {
+                        int index = m_scintilla.Text.IndexOf("<Enter latex code>", 0);
+                        m_scintilla.Selection.Start = index;
+                        m_scintilla.Selection.End = index + 18;
+                    }
+                    catch { }                    
                 }
                 m_scintilla.Selection.SelectAll();
             }
