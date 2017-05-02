@@ -164,9 +164,12 @@ namespace Latex4CorelDraw
                         m_scintilla.Selection.Start = index;
                         m_scintilla.Selection.End = index + 18;
                     }
-                    catch { }                    
+                    catch { }
                 }
-                m_scintilla.Selection.SelectAll();
+                else
+                {
+                    m_scintilla.Selection.SelectAll();
+                }
             }
         }
 
