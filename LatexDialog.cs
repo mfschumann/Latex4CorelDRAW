@@ -283,14 +283,15 @@ namespace Latex4CorelDraw
             ColorDialog dialog = new ColorDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
                 buttonColor.BackColor = dialog.Color;
                 Color col = buttonColor.BackColor;
                 float r = (float)col.R / 255.0f;
                 float g = (float)col.G / 255.0f;
                 float b = (float)col.B / 255.0f;
-                string rStr = r.ToString().Replace(',', '.');
-                string gStr = g.ToString().Replace(',', '.');
-                string bStr = b.ToString().Replace(',', '.');
+                string rStr = r.ToString(culture);
+                string gStr = g.ToString(culture);
+                string bStr = b.ToString(culture);
                 m_textColor = rStr + "," + gStr + "," + bStr;
 
             }

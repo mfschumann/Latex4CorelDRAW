@@ -131,9 +131,10 @@ namespace Latex4CorelDraw
                 return Color.Black;
             }
             string[] col = colorText.Split(',');
-            float fred = Convert.ToSingle(col[0].Replace('.', ',')) * 255.0f;
-            float fgreen = Convert.ToSingle(col[1].Replace('.', ',')) * 255.0f;
-            float fblue = Convert.ToSingle(col[2].Replace('.', ',')) * 255.0f;
+            System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("en-US");
+            float fred = Convert.ToSingle(col[0],culture) * 255.0f;
+            float fgreen = Convert.ToSingle(col[1],culture) * 255.0f;
+            float fblue = Convert.ToSingle(col[2],culture) * 255.0f;
             return Color.FromArgb((int)fred, (int)fgreen, (int)fblue);
         }
 
