@@ -12,7 +12,7 @@ namespace Latex4CorelDraw
         {
             if (!DockerUI.Current.CorelApp.ActiveDocument.DataFields.IsPresent(name))
             {
-                DataField df = DockerUI.Current.CorelApp.ActiveDocument.DataFields.Add(name, "\""+ value + "\"");
+                DataField df = DockerUI.Current.CorelApp.ActiveDocument.DataFields.Add(name, "\"General\"");
                 shape.ObjectData.Add(df);
             }
             shape.ObjectData[name].Value = value;
