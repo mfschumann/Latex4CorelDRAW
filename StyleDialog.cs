@@ -115,16 +115,12 @@ namespace Latex4CorelDraw
 
             this.Hide();
         }
-      
 
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            generateEquation();
+            m_result = DialogResult.OK;
+            m_finishedSuccessfully = true;
         }
 
         public bool generateEquation()

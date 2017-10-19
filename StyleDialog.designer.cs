@@ -212,7 +212,6 @@
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -419,7 +418,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StyleDialog";
             this.ShowIcon = false;
-            this.Text = "Latex";
+            this.Text = "Latex style bulk edit";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
