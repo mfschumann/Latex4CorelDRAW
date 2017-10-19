@@ -17,16 +17,27 @@ namespace Latex4CorelDraw
             }
             shape.ObjectData[name].Value = value;
         }
+
+        public static void addTag(Shape shape, string name, float value, string fmt)
+        {
+            if (!DockerUI.Current.CorelApp.ActiveDocument.DataFields.IsPresent(name))
+            {
+                DataField df = DockerUI.Current.CorelApp.ActiveDocument.DataFields.Add(name, fmt);
+                shape.ObjectData.Add(df);
+            }
+            shape.ObjectData[name].Value = value;
+        }
+
         public static void setShapeTags(LatexEquation equation)
         {
             addTag(equation.m_shape, "LatexCode", equation.m_code.Replace("\r\n", "\\r\\n"));
-            addTag(equation.m_shape, "LatexFontSize", equation.m_fontSize.ToString());
+            addTag(equation.m_shape, "LatexFontSize", equation.m_fontSize, "0");
             addTag(equation.m_shape, "LatexTextColor", equation.m_color);
             addTag(equation.m_shape, "LatexFont", equation.m_font.fontName);
             addTag(equation.m_shape, "LatexFontSeries", equation.m_fontSeries.fontSeries);
             addTag(equation.m_shape, "LatexFontShape", equation.m_fontShape.fontShape);
             addTag(equation.m_shape, "LatexMathFont", equation.m_mathFont.fontName);
-            addTag(equation.m_shape, "LatexTextShapeId", equation.m_textShapeId.ToString());
+            addTag(equation.m_shape, "LatexTextShapeId", equation.m_textShapeId, "0");
             addTag(equation.m_shape, "Latex4CorelDrawVersion", AddinUtilities.getVersionString());
         }
 
