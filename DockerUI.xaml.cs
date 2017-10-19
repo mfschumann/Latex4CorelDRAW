@@ -20,6 +20,7 @@ namespace Latex4CorelDraw
     public partial class DockerUI : UserControl
     {
         private LatexDialog m_dialog;
+        private StyleDialog m_sdialog;
         private corel.Application corelApp;
         public corel::Application CorelApp
         {
@@ -40,6 +41,7 @@ namespace Latex4CorelDraw
             AddinUtilities.copyLatexTemplate("LatexTemplate.txt", Properties.Resources.LatexTemplate);
 
             m_dialog = new LatexDialog();
+            m_sdialog = new StyleDialog();
             SettingsManager mgr = SettingsManager.getCurrent();
         }
 
@@ -102,6 +104,37 @@ namespace Latex4CorelDraw
         {
             string template = "\\begin{eqnarray*}\r\n\t<Enter latex code>\r\n\\end{eqnarray*}\r\n";
             createLatexObject(template, "Create latex equation array");
+        }
+
+        private void btn_bulkEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Corel.Interop.VGCore.ShapeRange sel = corelApp.ActiveDocument.SelectionRange;
+            LatexEquation eq = ShapeTags.getLatexEquation(sel.FirstShape);
+
+            if (eq != null)
+            {
+                m_sdialog.init(eq, "Bulk-edit style");
+                m_sdialog.ShowDialog();
+                if (m_sdialog.Result == System.Windows.Forms.DialogResult.OK)
+                {
+                    foreach (Corel.Interop.VGCore.Shape s in sel)
+                    {
+                        eq = ShapeTags.getLatexEquation(s);
+                        m_sdialog.LatexEquation = eq;
+                        if (m_sdialog.generateEquation())
+                        {
+                            Corel.Interop.VGCore.Shape latexObj = m_sdialog.LatexEquation.m_shape;
+                            if (latexObj != null)
+                            {
+                                latexObj.TransformationMatrix = s.TransformationMatrix;
+                                s.Delete();
+                            }
+                        }
+                    }
+
+                }
+            }
+                            
         }
     }
 }
