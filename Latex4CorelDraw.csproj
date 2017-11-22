@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Corel.Interop.VGCore, Version=19.1.0.414, Culture=neutral, PublicKeyToken=e4835428e22ad6f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Program Files\Corel\CorelDRAW Technical Suite 2017\Programs64\Assemblies\Corel.Interop.VGCore.dll</HintPath>
+    </Reference>
     <Reference Include="ScintillaNET, Version=2.6.0.0, Culture=neutral, PublicKeyToken=948d6c9751444115, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ScintillaNET\ScintillaNET.dll</HintPath>
@@ -50,10 +55,6 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
-    <Reference Include="c:\program files\corel\coreldraw graphics suite x8\programs64\Assemblies\Corel.Interop.VGCore.dll">
-      <Name>Corel.Interop.VGCore</Name>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddinUtilities.cs" />
@@ -148,6 +149,17 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VGCore">
+      <Guid>{95E23C91-BC5A-49F3-8CD1-1FC515597048}</Guid>
+      <VersionMajor>19</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -158,16 +170,16 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>
-      if not exist "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" md "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)"
-      copy "$(TargetPath)" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)CorelDrw.addon" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)AppUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)UserUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\SciLexer.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\SciLexer64.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.xml" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      if $(ConfigurationName) == Debug copy "$(TargetDir)\$(SolutionName).pdb" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)\$(SolutionName).pdb"
+      if not exist "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" md "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)"
+      copy "$(TargetPath)" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)CorelDrw.addon" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)AppUI.xslt" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)UserUI.xslt" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\SciLexer.dll" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\SciLexer64.dll" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.dll" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.xml" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)" /y
+      if $(ConfigurationName) == Debug copy "$(TargetDir)\$(SolutionName).pdb" "c:\program files\corel\coreldraw technical suite 2017\programs64\addons\$(SolutionName)\$(SolutionName).pdb"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
