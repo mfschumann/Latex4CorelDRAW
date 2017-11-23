@@ -30,6 +30,7 @@ namespace Latex4CorelDraw
 
         public static void setShapeTags(LatexEquation equation)
         {
+            equation.m_shape.Name = "LaTeX";
             addTag(equation.m_shape, "LatexCode", equation.m_code.Replace("\r\n", "\\r\\n"));
             addTag(equation.m_shape, "LatexFontSize", equation.m_fontSize, "0");
             addTag(equation.m_shape, "LatexTextColor", equation.m_color);

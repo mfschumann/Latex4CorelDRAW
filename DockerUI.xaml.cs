@@ -136,5 +136,14 @@ namespace Latex4CorelDraw
             }
                             
         }
+        private void btn_selectAll_Click(object sender, RoutedEventArgs e)
+        {
+            corelApp.ActiveDocument.ClearSelection();
+            corel.ShapeRange sr = corelApp.CreateShapeRange();
+            sr = corelApp.ActivePage.Shapes.FindShapes(Name: "teximport.pdf");
+            sr.AddToSelection();
+            sr = corelApp.ActivePage.Shapes.FindShapes(Name: "LaTeX");
+            sr.AddToSelection();
+        }
     }
 }

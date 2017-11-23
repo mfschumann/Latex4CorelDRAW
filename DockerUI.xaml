@@ -13,6 +13,7 @@
             <Button Content="Edit latex" Margin="2,2,2,2" Name="btn_editLatex" Click="btn_editLatex_Click"/>
             <Button Content="Add equation" Margin="2,2,2,2" Name="btn_addEquation" Click="btn_addEquation_Click"/>
             <Button Content="Add eqnarray" Margin="2,2,2,2" Name="btn_addEqnarray" Click="btn_addEqnarray_Click"/>
+            <Button Content="Select all Latex objects" Margin="2,2,2,2" Name="btn_selectAll" Click="btn_selectAll_Click"/>
             <Button Content="Bulk-edit style" Margin="2,2,2,2" Name="btn_bulkEdit" Click="btn_bulkEdit_Click"/>
         </StackPanel>
     </Grid>
